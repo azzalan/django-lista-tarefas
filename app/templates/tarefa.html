@@ -1,0 +1,64 @@
+{% load staticfiles %}
+<!DOCTYPE html>
+<html lang="pt-br">
+  <head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <!-- The above 3 meta tags *must* come first in the head; any other head content must come *after* these tags -->
+    <title>Tarefas</title>
+    <!-- Custom css para a página -->
+    <link rel="stylesheet" href="{% static 'css/style.css' %}" >
+    <!-- Bootstrap -->
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u" crossorigin="anonymous">
+    <!-- font -->
+    <link rel="stylesheet" href="https://opensource.keycdn.com/fontawesome/4.6.3/font-awesome.min.css">
+  </head>
+  <body class="fundo-claro">
+        <div class="page-header text-center">
+            <h1>Tarefas <small>gerencie suas atividades</small></h1>
+        </div>
+        <h1 class=""></h1>
+        <div class="container col-md-offset-3 col-md-6 col-xs-12">
+            <div class="panel panel-default">
+                <div class="panel-heading">
+                    <form method="post" class="col-xs-12" enctype="multipart/form-data" action="">
+                        {% csrf_token %}
+                        <h3 class="panel-title">
+                            {{ form }}
+                            <input type="submit" class="btn btn-default add" value="Add" />
+                        </h3>
+                    </form>
+                </div>
+                <ul class="list-group">
+                    {% for tarefa in lista_de_tarefas %}
+                    <li class="list-group-item {% if tarefa.status %}completa{% endif %}">
+                        <div class="test">
+                            <div class="tarefa">{{ tarefa.nome }}</div>
+                            <div class="pull-right">
+                                <form method="post" class="col-xs-12" enctype="multipart/form-data" action="">
+                                    {% csrf_token %}
+                                    <button name="status" value="{{ tarefa.id }}" type="submit" class="btn btn-default">
+                                        {% if tarefa.status %}
+                                        <i class="fa fa-check"></i>
+                                        {% else %}
+                                        <i class="fa fa-times"></i>
+                                        {% endif %}
+                                    </button>
+                                    <button name="apagar" value="{{ tarefa.id }}" type="submit" class="btn btn-default">
+                                        <i class="fa fa-trash"></i>
+                                    </button>                      
+                                </form>
+                            </div>
+                            <!-- pull-right -->
+                        </div>
+                    </li>
+                    {% endfor %}
+                </ul>
+            </div>
+            <!-- panel panel-primary -->
+        </div>
+    <!-- Bootstrap -->
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js" integrity="sha384-Tc5IQib027qvyjSMfHjOMaLkfuWVxZxUPnCJA7l2mCWNIpG9mGCD8wGNIcPD7Txa" crossorigin="anonymous"></script>
+  </body>
+</html>

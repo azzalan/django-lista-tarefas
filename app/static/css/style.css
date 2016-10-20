@@ -1,0 +1,45 @@
+.fundo-claro {
+    background:#ecf0f5;
+    margin: 0;
+    color: #163b50;
+}
+
+.test {
+    padding: 0px 0px 10px 0px;
+}
+
+.pull-right {
+    text-align: right;
+}
+
+.tarefa {
+    margin: 7px 0px 0px 0px;
+    display: inline-block;
+}
+
+.container .panel .panel-heading .panel-title {
+    color: #163b50;
+}
+
+.container .panel .btn-default {
+    color: #31678B;
+}
+
+.container .panel .panel-heading {
+    min-height: 50px;
+}
+
+.container .panel .panel-heading input {
+    width: 80%;
+    display: inline-block;
+    color: #31678B;
+}
+
+.container .panel .panel-heading .add {
+    width: 18%;
+    display: inline-block;
+}
+
+.container .panel .completa {
+    background:#ecf0f5;
+}
